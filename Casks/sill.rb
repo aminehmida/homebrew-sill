@@ -4,13 +4,13 @@ cask "sill" do
 
   url "https://github.com/aminehmida/sill/releases/download/v#{version}/Sill.zip"
   name "Sill"
-  desc "Fork of Sill for Mac that tells devices when a text field has focus"
+  desc "Window streaming to phones, with keyboards that follow text focus"
   homepage "https://github.com/aminehmida/sill"
 
   livecheck do
     url :url
     regex(/^v?(\d+(?:\.\d+)+(?:-[\w.]+)?)$/i)
-    strategy :github_releases
+    strategy :github_latest
   end
 
   depends_on arch: :arm64
@@ -19,9 +19,8 @@ cask "sill" do
   app "Sill.app"
 
   # Ad hoc signed and not notarized: without this Gatekeeper refuses to open it.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Sill.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Sill.app"]
   end
 
   zap trash: [
