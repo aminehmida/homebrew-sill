@@ -1,6 +1,6 @@
 cask "sill" do
-  version "0.6.2-textfocus.1"
-  sha256 "07c32834939fe54339c3b32290218e3a4d5cb4d9c97a95cc6ddcee8409b7da86"
+  version "0.6.2-textfocus.2"
+  sha256 "be50856581408b729e9d67ea5d0e01ee28018ab7cf703ea96f0c459356cb6923"
 
   url "https://github.com/aminehmida/sill/releases/download/v#{version}/Sill.zip"
   name "Sill"
